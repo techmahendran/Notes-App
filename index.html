@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Notes App</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <!-- Popup Box -->
+    <div class="popup-box">
+      <div class="popup custom-scrollbar">
+        <div class="content">
+          <header>
+            <h2>Add a new Note</h2>
+            <button class="closebtn"><i class="fa fa-close"></i></button>
+          </header>
+          <!-- Form Group -->
+          <form>
+            <div class="row-title">
+              <input type="text" id="titleInput" required />
+              <label>Title</label>
+            </div>
+            <div class="row-description">
+              <textarea required></textarea>
+              <label>Description</label>
+            </div>
+            <div class="addbtn">
+              <button>Add Note</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    <!-- Add Btn Box -->
+    <div class="notes" id="notesPlaceholder">
+      <div class="add-box" title="Create Note">
+        <button><i class="fa fa-plus"></i></button>
+        <div class="addnote">Add New Notes</div>
+      </div>
+    </div>
+
+    <script src="main.js"></script>
+  </body>
+</html>

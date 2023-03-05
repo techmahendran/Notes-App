@@ -1,0 +1,358 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  overflow-x: hidden;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+  background-color: lightgreen;
+}
+
+.add-box {
+  width: 250px;
+  height: 250px;
+  background-color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin: 1rem;
+  cursor: pointer;
+  border-radius: 8px;
+  transition: all 0.6s ease;
+}
+
+.add-box:hover {
+  box-shadow: 2px 3px 8px #000;
+}
+
+.add-box button {
+  border: none;
+  outline: none;
+  background: transparent;
+  font-size: 2rem;
+  width: 60px;
+  height: 60px;
+  color: rgb(90, 197, 233);
+  border: 1px dashed blue;
+  border-radius: 50%;
+  cursor: pointer;
+  margin-bottom: 10px;
+}
+
+.add-box button i {
+  font-size: 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.notes {
+  display: grid;
+  gap: 50px;
+  grid-template-columns: repeat(auto-fill, 265px);
+}
+
+.add-box .addnote {
+  color: rgb(58, 165, 200);
+}
+
+.note {
+  background-color: #fff;
+  width: 300px;
+  height: 300px;
+  border-radius: 10px;
+  padding: 20px;
+  position: relative;
+  margin: 10px;
+  overflow: hidden;
+}
+
+.note h3 {
+  margin-bottom: 1rem;
+}
+
+.note .content p {
+  height: 160px;
+}
+
+.note .content p::-webkit-scrollbar {
+  width: 0;
+}
+
+.bottom-content {
+  height: 50px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 1px solid #ccc;
+  margin: 10px 0 0 0;
+  color: #000a;
+}
+
+.bottom-content .setting {
+  cursor: pointer;
+}
+
+.setting .tools {
+  background-color: #fff;
+  box-shadow: 2px 0px 3px #000;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  height: 60px;
+  position: absolute;
+  bottom: 30px;
+  right: 10px;
+  border: none;
+  outline: none;
+  border-radius: 5px;
+  cursor: pointer;
+  padding: 5px;
+  transform: scale(0);
+  transition: all 0.2s ease;
+}
+
+.setting.show .tools {
+  transform: scale(1);
+}
+
+.tools button {
+  padding: 4px;
+  border-radius: 5px;
+}
+
+.tools button:hover {
+  background-color: #d3d3d354;
+}
+
+.tools button i {
+  padding-right: 5px;
+}
+
+.popup-box {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.4);
+  z-index: 1;
+  display: none;
+}
+
+.popup-box.active {
+  display: block;
+}
+
+.popup-box .popup {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #fff;
+  padding: 1rem;
+  width: 400px;
+  height: 400px;
+  box-shadow: 3px 10px 5px #424145d9;
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+  border-bottom: 1px solid #ccc;
+  padding-bottom: 20px;
+}
+
+.content button {
+  background: transparent;
+  border: none;
+  outline: none;
+  cursor: pointer;
+}
+
+.closebtn {
+  font-size: 30px;
+}
+.content {
+  position: relative;
+}
+.row-title {
+  margin-bottom: 23px;
+}
+.row-title label {
+  position: absolute;
+  top: 75px;
+  left: 10px;
+  padding: 3px;
+  background: white;
+  transition: all 0.2s ease;
+}
+.row-title input:focus {
+  border: 2px solid rgb(97 201 233);
+}
+
+.row-title input:focus ~ label,
+.row-title input:valid ~ label {
+  color: #2196f3;
+  font-size: 11px;
+  top: 60px;
+}
+
+.row-description label {
+  position: absolute;
+  top: 135px;
+  left: 10px;
+  padding: 4px;
+  background: white;
+  transition: all 0.2s ease;
+}
+
+.row-description textarea:focus {
+  border: 2px solid rgb(97 201 233);
+}
+.row-description textarea:focus ~ label,
+.row-description textarea:valid ~ label {
+  color: #2196f3;
+  font-size: 11px;
+  top: 118px;
+}
+
+textarea {
+  height: 180px;
+}
+textarea::-webkit-scrollbar {
+  width: 0;
+}
+.row-title input,
+.row-description textarea {
+  resize: none;
+  width: 100%;
+  padding: 8px 10px;
+  outline: none;
+  border-radius: 5px;
+  font-size: 17px;
+  border: 1px solid #000;
+}
+
+.addbtn {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  width: 100%;
+  background-color: blue;
+  padding: 7px;
+  border-radius: 10px;
+  text-align: center;
+  cursor: pointer;
+  margin-top: 10px;
+}
+.addbtn button {
+  display: inline-block;
+  font-size: 18px;
+  color: #fff;
+}
+.btns1 {
+  text-align: center;
+}
+/* media less than 768px */
+@media (max-width: 768px) {
+  .add-box {
+    width: 200px;
+    height: 200px;
+  }
+  .add-box button {
+    width: 50px;
+    height: 50px;
+  }
+  .add-box button i {
+    font-size: 1.7rem;
+  }
+  .add-box .addnote {
+    font-size: 15px;
+  }
+  .note {
+    width: 250px;
+    height: 250px;
+  }
+  .note .content p {
+    height: 130px;
+  }
+  .notes {
+    gap: 0px;
+  }
+  .popup-box .popup {
+    width: 380px;
+    height: 380px;
+    top: 40%;
+  }
+  header {
+    padding-bottom: 10px;
+  }
+  .row-title label {
+    top: 64px;
+  }
+  .row-title input:focus ~ label {
+    top: 50px;
+  }
+  .row-description textarea:focus ~ label {
+    top: 108px;
+  }
+  textarea {
+    height: 175px;
+  }
+}
+/* media less than mobile screen */
+@media (max-width: 520px), (max-width: 500px) {
+  div#notesPlaceholder {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    min-height: 100vh;
+  }
+  .popup-box .popup {
+    width: 310px;
+  }
+  header h2,
+  .closebtn {
+    font-size: 22px;
+  }
+  .popup-box .popup {
+    top: 50%;
+    height: 360px;
+  }
+  .add-box {
+    margin-bottom: 0px;
+  }
+  .row-title label {
+    top: 55px;
+    font-size: 15px;
+  }
+  .row-title input:focus ~ label,
+  .row-title input:valid ~ label {
+    top: 40px;
+  }
+  .row-description label {
+    top: 112px;
+    font-size: 15px;
+  }
+  .row-description textarea:focus ~ label,
+  .row-description textarea:valid ~ label {
+    top: 98px;
+  }
+  .row-title input,
+  .row-description textarea {
+    font-size: 16px;
+  }
+  .addbtn button {
+    font-size: 16px;
+  }
+}
