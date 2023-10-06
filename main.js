@@ -78,6 +78,7 @@ function showNotes() {
         </div>
       </main>
       `;
+
     addBtn.insertAdjacentHTML("afterend", noteEl);
   });
 }
@@ -96,7 +97,7 @@ function showMenu(elem) {
 
 // Deletebtn
 function deleteNote(noteId) {
- const confirmMsg = confirm("Are you sure want to delete this note?");
+  const confirmMsg = confirm("Are you sure want to delete this note?");
   if (confirmMsg) {
     notes.splice(noteId, 1); // removing selected note from array
     // saving updated notes to localStorage
@@ -139,30 +140,30 @@ addNote.addEventListener("click", (e) => {
   if (notetitle === "" || notedescr === "") {
     // title & descr is empty so alert is show
     alert("Enter the All Fields");
-  }
+  } else {
+    if (notetitle || notedescr) {
+      // Getting month, day, year from the current date
+      let dateobj = new Date(),
+        month = months[dateobj.getMonth()],
+        day = dateobj.getDate(),
+        year = dateobj.getFullYear();
+      // set localStorage title & descr value is noteInfo object
+      let noteInfo = {
+        title: notetitle,
+        description: notedescr,
+        date: `${month} ${day <= 10 ? "0" + day : day}, ${year}`,
+      };
 
-  if (notetitle || notedescr) {
-    // Getting month, day, year from the current date
-    let dateobj = new Date(),
-      month = months[dateobj.getMonth()],
-      day = dateobj.getDate(),
-      year = dateobj.getFullYear();
-    // set localStorage title & descr value is noteInfo object
-    let noteInfo = {
-      title: notetitle,
-      description: notedescr,
-      date: `${month} ${day <= 10 ? "0" + day : day}, ${year}`,
-    };
-
-    // isUpdate show the noteInfo value
-    if (!isUpdate) {
-      notes.push(noteInfo); // push on noteInfo content
-    } else {
-      isUpdate = false;
-      notes[updatedId] = noteInfo;
+      // isUpdate show the noteInfo value
+      if (!isUpdate) {
+        notes.push(noteInfo); // push on noteInfo content
+      } else {
+        isUpdate = false;
+        notes[updatedId] = noteInfo;
+      }
+      localStorage.setItem("notes", JSON.stringify(notes));
+      closebtn.click();
+      showNotes();
     }
-    localStorage.setItem("notes", JSON.stringify(notes));
-    closebtn.click();
-    showNotes();
   }
 });
