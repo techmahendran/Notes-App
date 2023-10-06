@@ -96,12 +96,13 @@ function showMenu(elem) {
 
 // Deletebtn
 function deleteNote(noteId) {
-  confirm("Are you sure want to delete this note?");
-
-  notes.splice(noteId, 1); // removing selected note from array
-  // saving updated notes to localStorage
-  localStorage.setItem("notes", JSON.stringify(notes));
-  showNotes();
+ const confirmMsg = confirm("Are you sure want to delete this note?");
+  if (confirmMsg) {
+    notes.splice(noteId, 1); // removing selected note from array
+    // saving updated notes to localStorage
+    localStorage.setItem("notes", JSON.stringify(notes));
+    showNotes();
+  }
 }
 
 window.addEventListener("click", () => {
